@@ -15,13 +15,13 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable dslp()
         {
-            string sql = "Select tenlp From loaiphong";
+            string sql = "Select RoomName From RoomName";
             return db.getDS(sql);
         }
 
         public int getTiendatcoc(string tenlp, int sl)
         {
-            string sql = "select giaphong from loaiphong where tenlp = '" + tenlp + "'";
+            string sql = "select PriceRoom from RoomName where RoomName = '" + tenlp + "'";
             DataTable dtb = db.getDS(sql);
             DataRow r = dtb.Rows[0];
             int gia = int.Parse(r[0].ToString());
@@ -30,7 +30,7 @@ namespace QuanLyKhachSan.BLL
 
         public int getGiaphong(string tenlp)
         {
-            string sql = "select giaphong from loaiphong where tenlp = '" + tenlp + "'";
+            string sql = "select PriceRoom from RoomName where RoomName = '" + tenlp + "'";
             DataTable dtb = db.getDS(sql);
             DataRow r = dtb.Rows[0];
             return (int)r[0];
@@ -38,19 +38,19 @@ namespace QuanLyKhachSan.BLL
 
         public bool truslph(string tenlp)
         {
-            string sql = "Update loaiphong set soluong=soluong-1 where tenlp = '" + tenlp + "'";
+            string sql = "Update RoomName set Quantity=Quantity-1 where RoomName = '" + tenlp + "'";
             return db.ExecuteQuery(sql);
         }
 
         public bool congslph(string tenlp)
         {
-            string sql = "Update loaiphong set soluong=soluong+1 where tenlp = '" + tenlp + "'";
+            string sql = "Update RoomName set Quantity=Quantity+1 where RoomName = '" + tenlp + "'";
             return db.ExecuteQuery(sql);
         }
 
         public string slp(string tenlp)
         {
-            string sql = "Select soluong from loaiphong where tenlp = '" + tenlp + "'";
+            string sql = "Select Quantity from RoomName where RoomName = '" + tenlp + "'";
             DataTable dtb = new DataTable();
             dtb=db.getDS(sql);
             DataRow r = dtb.Rows[0];

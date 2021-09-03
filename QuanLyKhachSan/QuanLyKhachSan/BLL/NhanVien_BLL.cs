@@ -15,37 +15,37 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable dsnv()
         {
-            string sql = "Select manv,hoten,ngaysinh,gioitinh,sdt,cmnd,diachi,email From nhanvien";
+            string sql = "Select IdEmployee,NameEmployee,DateOfBirth,GenderEmployee,PhoneNumber,IdCardEmployee,AddressEmployee,EmailEmployee From Employee";
             return db.getDS(sql);
         }
 
         public DataTable dsnv(string macv)
         {
-            string sql = "Select manv,hoten,ngaysinh,gioitinh,sdt,cmnd,diachi,email From nhanvien where macv = '" + macv + "'";
+            string sql = "Select IdEmployee,NameEmployee,DateOfBirth,GenderEmployee,PhoneNumber,IdCardEmployee,AddressEmployee,EmailEmployee From Employee where IdPosition = '" + macv + "'";
             return db.getDS(sql);
         }
 
-        public bool addnv(NhanVien_DTO nv)
+        public bool addnv(Employee_DTO nv)
         {
             string[] param = { "@manv", "@macv", "@hoten", "@ngaysinh", "@gioitinh", "@sdt", "@cmnd", "@diachi", "@email" };
-            object[] values = { nv.Manv, nv.Macv, nv.Hoten, nv.Ngaysinh, nv.Gioitinh, nv.Sdt, nv.Cmnd, nv.Diachi, nv.Email };
-            string query = "Insert Into nhanvien Values(@manv,@macv,@hoten,convert(date,@ngaysinh,105),@gioitinh,@sdt,@cmnd,@diachi,@email)";
+            object[] values = { nv.IdEmployee, nv.IdPosition, nv.NameEmployee, nv.DateOfBirth, nv.GenderEmployee, nv.PhoneNumber, nv.IdCardEmployee, nv.AddressEmployee, nv.EmailEmployee };
+            string query = "Insert Into Employee Values(@manv,@macv,@hoten,convert(date,@ngaysinh,105),@gioitinh,@sdt,@cmnd,@diachi,@email)";
             return db.ExecuteNonQueryPara(query, param, values);
         }
 
-        public bool editnv(NhanVien_DTO nv)
+        public bool editnv(Employee_DTO nv)
         {
             string[] param = { "@manv", "@macv", "@hoten", "@ngaysinh", "@gioitinh", "@sdt", "@cmnd", "@diachi", "@email" };
-            object[] values = { nv.Manv, nv.Macv, nv.Hoten, nv.Ngaysinh, nv.Gioitinh, nv.Sdt, nv.Cmnd, nv.Diachi, nv.Email };
-            string query = "Update nhanvien Set manv=@manv, macv=@macv, hoten=@hoten, ngaysinh=convert(date,@ngaysinh,105), gioitinh=@gioitinh, sdt=@sdt, cmnd=@cmnd,  diachi=@diachi, email=@email Where manv=@manv";
+            object[] values = { nv.IdEmployee, nv.IdPosition, nv.NameEmployee, nv.DateOfBirth, nv.GenderEmployee, nv.PhoneNumber, nv.IdCardEmployee, nv.AddressEmployee, nv.EmailEmployee };
+            string query = "Update Employee Set IdEmployee=@manv, IdPosition=@macv, NameEmployee=@hoten, DateOfBirth=convert(date,@ngaysinh,105), GenderEmployee=@gioitinh, PhoneNumber=@sdt, IdCardEmployee=@cmnd,  AddressEmployee=@diachi, EmailEmployee=@email Where IdEmployee=@manv";
             return db.ExecuteNonQueryPara(query, param, values);
         }
 
-        public bool deletenv(NhanVien_DTO nv)
+        public bool deletenv(Employee_DTO nv)
         {
             string[] param = { "@manv", "@macv", "@hoten", "@ngaysinh", "@gioitinh", "@sdt", "@cmnd", "@diachi", "@email" };
-            object[] values = { nv.Manv, nv.Macv, nv.Hoten, nv.Ngaysinh, nv.Gioitinh, nv.Sdt, nv.Cmnd, nv.Diachi, nv.Email };
-            string query = "Delete nhanvien Where manv= @manv";
+            object[] values = { nv.IdEmployee, nv.IdPosition, nv.NameEmployee, nv.DateOfBirth, nv.GenderEmployee, nv.PhoneNumber, nv.IdCardEmployee, nv.AddressEmployee, nv.EmailEmployee };
+            string query = "Delete Employee Where IdEmployee= @manv";
             return db.ExecuteNonQueryPara(query, param, values);
         }
 

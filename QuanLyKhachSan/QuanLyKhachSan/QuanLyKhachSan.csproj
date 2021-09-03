@@ -87,15 +87,15 @@
     <Compile Include="BLL\NhanVien_BLL.cs" />
     <Compile Include="BLL\Phong_BLL.cs" />
     <Compile Include="DAL\DBAccess.cs" />
-    <Compile Include="DTO\ChucVu_DTO.cs" />
-    <Compile Include="DTO\CTDP_DTO.cs" />
-    <Compile Include="DTO\DatPhong_DTO.cs" />
-    <Compile Include="DTO\HoaDon_DTO.cs" />
-    <Compile Include="DTO\KhachHang_DTO.cs" />
-    <Compile Include="DTO\LoaiPhong_DTO.cs" />
-    <Compile Include="DTO\NhanVien_DTO.cs" />
-    <Compile Include="DTO\Phong_DTO.cs" />
-    <Compile Include="DTO\User_DTO.cs" />
+    <Compile Include="DTO\Position_DTO.cs" />
+    <Compile Include="DTO\BookingDetails_DTO.cs" />
+    <Compile Include="DTO\Booking_DTO.cs" />
+    <Compile Include="DTO\Bill_DTO.cs" />
+    <Compile Include="DTO\Customer_DTO.cs" />
+    <Compile Include="DTO\RomeName_DTO.cs" />
+    <Compile Include="DTO\Employee_DTO.cs" />
+    <Compile Include="DTO\Room_DTO.cs" />
+    <Compile Include="DTO\Permission_DTO.cs" />
     <Compile Include="frmDSKH.cs">
       <SubType>Form</SubType>
     </Compile>

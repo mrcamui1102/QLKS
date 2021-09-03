@@ -13,9 +13,11 @@ namespace QuanLyKhachSan.BLL
     {
         DBAccess db = new DBAccess();
 
-        public DataRow infoAdmin(string manv)
+        public DataRow infoAdmin(string IdEmployee)
         {
-            string sql = "Select nv.manv,cv.tencv,nv.hoten,nv.ngaysinh,nv.gioitinh,nv.sdt,nv.cmnd,nv.email,nv.diachi,pq.quyen,qnv.matkhau From nhanvien as nv, chucvu as cv, phanquyen as pq, quyennv as qnv where nv.macv=cv.macv and nv.manv=qnv.manv and qnv.id = pq.id and nv.manv = '" + manv + "'";
+            string sql = "Select nv.IdEmployee, cv.NamePosition, nv.NameEmployee, nv.DateOfBirth, nv.GenderEmployee, nv.PhoneNumber, nv.IdCardEmployee, nv.EmailEmployee, nv.AddressEmployee, pq.Permission, qnv.password " +
+                "From Employee as nv, Position as cv, Role as pq, Permission as qnv " +
+                "where nv.IdPosition=cv.IdPosition and nv.IdEmployee=qnv.IdEmployee and qnv.Id = pq.Id and nv.IdEmployee = '" + IdEmployee + "'";
             DataTable dtb = db.getDS(sql);
             DataRow r = dtb.Rows[0];
             return r;
@@ -23,13 +25,13 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable dsnvpq()
         {
-            string sql = "select manv from nhanvien";
+            string sql = "select IdEmployee from Employee";
             return db.getDS(sql);
         }
 
-        public string quyennv(string manv)
+        public string quyennv(string IdEmployee)
         {
-            string sql = "select pq.quyen from phanquyen as pq,quyennv as qnv where qnv.id=pq.id and qnv.manv='" + manv + "'";
+            string sql = "select pq.Permission from Role as pq, Permission as qnv where qnv.Id=pq.Id and qnv.IdEmployee='" + IdEmployee + "'";
             DataTable dtb = db.getDS(sql);
             DataRow r = dtb.Rows[0];
             return r[0].ToString();

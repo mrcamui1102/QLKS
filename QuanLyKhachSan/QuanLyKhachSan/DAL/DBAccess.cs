@@ -23,7 +23,7 @@ namespace QuanLyKhachSan.DAL
         //Kết nối
         public void connectDB()
         {
-            string strCon = @"Server=.;Database=QLKSC;User ID=sa;Password=123456;";
+            string strCon = @"Server=DESKTOP-8VBF1B8\SQLEXPRESS;Database=QLKSCN;User ID=sa;Password=sa;";
             con = new SqlConnection(strCon);
             try
             {

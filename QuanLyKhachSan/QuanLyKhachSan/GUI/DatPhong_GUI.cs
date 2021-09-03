@@ -34,9 +34,9 @@ namespace QuanLyKhachSan.GUI
             InitializeComponent();
         }
 
-        private DatPhong_DTO getdatadp()
+        private Booking_DTO getdatadp()
         {
-            DatPhong_DTO dp = new DatPhong_DTO();
+            Booking_DTO dp = new Booking_DTO();
             dp.Madp = txtmadp.Text;
             dp.Manv = txtmanv.Text;
             dp.Makh = txtmakh.Text;
@@ -50,9 +50,9 @@ namespace QuanLyKhachSan.GUI
             return dp;
         }
 
-        private CTDP_DTO getdatactdp(ArrayList arr, int i)
+        private BookingDetails_DTO getdatactdp(ArrayList arr, int i)
         {
-            CTDP_DTO ctdp = new CTDP_DTO();
+            BookingDetails_DTO ctdp = new BookingDetails_DTO();
             ctdp.Madp = txtmadp.Text;
             ctdp.Maphong = arr[i].ToString();
             return ctdp;
@@ -284,7 +284,7 @@ namespace QuanLyKhachSan.GUI
             {
                 if (t == 1)
                 {
-                    DatPhong_DTO dp = getdatadp();
+                    Booking_DTO dp = getdatadp();
                     if (dpbl.adddp(dp))
                     {
                         int d = 0;
@@ -337,7 +337,7 @@ namespace QuanLyKhachSan.GUI
                 }
                 if (t == 2)
                 {
-                    DatPhong_DTO dp = getdatadp();
+                    Booking_DTO dp = getdatadp();
                     if (dpbl.editdp(dp))
                     {
                         //DataTable dtb = (ctdpbl.dsdpct(txtmadp.Text));
@@ -388,9 +388,9 @@ namespace QuanLyKhachSan.GUI
                     return "HD" + (id + 1).ToString();
         }
 
-        private HoaDon_DTO getdatahd()
+        private Bill_DTO getdatahd()
         {
-            HoaDon_DTO hd = new HoaDon_DTO();
+            Bill_DTO hd = new Bill_DTO();
             hd.Mahd = getmahd();
             hd.Madp = txtmadp.Text;
             hd.Ngaylap = DateTime.Today;
@@ -424,7 +424,7 @@ namespace QuanLyKhachSan.GUI
                             pbl.traphong(getdspd()[i].ToString());
                             lpbl.congslph(txtLpDat.Text);
                         }
-                        HoaDon_DTO hd = getdatahd();
+                        Bill_DTO hd = getdatahd();
                         if (hdbl.laphoadon(hd))
                         {
                             MessageBox.Show("Cập nhật thành công!");

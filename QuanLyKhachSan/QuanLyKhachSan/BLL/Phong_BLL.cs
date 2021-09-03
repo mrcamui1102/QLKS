@@ -15,31 +15,31 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable dsph()
         {
-            string sql = "Select maphong From phong";
+            string sql = "Select IdRoom From Room";
             return db.getDS(sql);
         }
 
         public DataTable dsph(string tenlp)
         {
-            string sql = "Select phong.maphong From phong, loaiphong where phong.tenlp = loaiphong.tenlp and loaiphong.tenlp = '" + tenlp + "' and phong.tinhtrang = 'False'" ;
+            string sql = "Select Room.IdRoom From Room, RoomName where Room.tenlp = RoomName.tenlp and RoomName.RoomName = '" + tenlp + "' and Room.status = 'False'";
             return db.getDS(sql);
         }
 
         public bool capnhatphong(string maphong)
         {
-            string sql = "Update phong set tinhtrang = 1 where maphong = '" + maphong + "'";
+            string sql = "Update Room set status = 1 where IdRoom = '" + maphong + "'";
             return db.ExecuteQuery(sql);
         }
 
         public bool traphong(string maphong)
         {
-            string sql = "Update phong set tinhtrang = 0 where maphong = '" + maphong + "'";
+            string sql = "Update Room set status = 0 where IdRoom = '" + maphong + "'";
             return db.ExecuteQuery(sql);
         }
 
         public bool kiemtratinhtrang(string maphong)
         {
-            string sql = "select tinhtrang from phong where maphong = '" + maphong + "'";
+            string sql = "select status from Room where IdRoom = '" + maphong + "'";
             DataTable dtb = new DataTable();
             dtb = db.getDS(sql);
             DataRow r = dtb.Rows[0];
@@ -51,7 +51,7 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable thongtinphong(string maphong)
         {
-            string sql = "Select kh.makh,kh.hoten,dp.ngayden,dp.ngaydi from khachhang as kh, datphong as dp, ctphongdat as ctpd where kh.makh = dp.makh and dp.madp = ctpd.madp and ctpd.maphong = '" + maphong + "'";
+            string sql = "Select kh.IdCustomer,kh.NameCustomer,dp.DateCheckIn,dp.DateCheckOut from Customer as kh, Booking as dp, Bookingdetails as ctpd where kh.IdCustomer = dp.IdCustomer and dp.IdBooking = ctpd.IdBooking and ctpd.IdRoom = '" + maphong + "'";
             return db.getDS(sql);
         }
     }

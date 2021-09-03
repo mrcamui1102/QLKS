@@ -15,21 +15,21 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable dsdpct()
         {
-            string sql = "Select * From chitietdatphong";
+            string sql = "Select * From Bookingdetails";
             return db.getDS(sql);
         }
 
-        public DataTable dsdpct(string madp)
+        public DataTable dsdpct(string IdBooking)
         {
-            string sql = "Select ct.maphong From ctphongdat as ct, datphong as dp where ct.madp = dp.madp and dp.madp = '" + madp + "'";
+            string sql = "Select ct.IdRoom From Bookingdetails as ct, Booking as dp where ct.IdBooking = dp.IdBooking and dp.IdBooking = '" + IdBooking + "'";
             return db.getDS(sql);
         }
 
-        public bool addctdp(CTDP_DTO ctdp)
+        public bool addctdp(BookingDetails_DTO ctdp)
         {
             string[] param = { "@madp", "@maphong" };
-            object[] values = { ctdp.Madp, ctdp.Maphong };
-            string query = "Insert Into ctphongdat Values(@madp,@maphong)";
+            object[] values = { ctdp.IdBooking, ctdp.IdRoom };
+            string query = "Insert Into BookingDetails Values(@madp,@maphong)";
             return db.ExecuteNonQueryPara(query, param, values);
         }
 

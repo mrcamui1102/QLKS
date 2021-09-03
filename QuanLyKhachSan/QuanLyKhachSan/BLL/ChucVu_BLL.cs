@@ -15,7 +15,7 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable dscv()
         {
-            string sql = "Select * From chucvu";
+            string sql = "Select * From Position";
             return db.getDS(sql);
         }
     }

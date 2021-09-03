@@ -15,14 +15,14 @@ namespace QuanLyKhachSan.BLL
 
         public DataTable dskh()
         {
-            string sql = "Select * From khachhang";
+            string sql = "Select * From Customer";
             return db.getDS(sql);
         }
 
         public bool addkh(KhachHang_DTO kh)
         {
             string[] param = {"@makh", "@hoten", "@cmnd", "@sdt", "@email", "@diachi" };
-            object[] values = {kh.Makh, kh.Hoten, kh.Cmnd, kh.Sdt, kh.Email, kh.Diachi };
+            object[] values = {kh.IdCustomer, kh.NameCustomer, kh.IdCardCustomer, kh.PhoneNumber, kh.EmailCustomer, kh.AddressCustomer };
             string query = "Insert Into khachhang Values(@makh,@hoten,@cmnd,@sdt,@email,@diachi)";
             return db.ExecuteNonQueryPara(query, param, values);
         }
@@ -30,16 +30,16 @@ namespace QuanLyKhachSan.BLL
         public bool editkh(KhachHang_DTO kh)
         {
             string[] param = { "@makh", "@hoten", "@cmnd", "@sdt", "@email", "@diachi" };
-            object[] values = { kh.Makh, kh.Hoten, kh.Cmnd, kh.Sdt, kh.Email, kh.Diachi };
-            string query = "Update khachhang Set makh=@makh, hoten=@hoten, cmnd=@cmnd, sdt=@sdt, email=@email, diachi=@diachi Where makh=@makh";
+            object[] values = { kh.IdCustomer, kh.NameCustomer, kh.IdCardCustomer, kh.PhoneNumber, kh.EmailCustomer, kh.AddressCustomer };
+            string query = "Update Customer Set IdCustomer=@makh, NameCustomer=@hoten, IdCardCustomer=@cmnd, PhoneNumber=@sdt, EmailCustomer=@email, AddressCustomer=@diachi Where IdCustomer=@makh";
             return db.ExecuteNonQueryPara(query, param, values);
         }
 
         public bool deletekh(KhachHang_DTO kh)
         {
             string[] param = { "@makh", "@hoten", "@cmnd", "@sdt", "@email", "@diachi" };
-            object[] values = { kh.Makh, kh.Hoten, kh.Cmnd, kh.Sdt, kh.Email, kh.Diachi };
-            string query = "Delete khachhang Where makh= @makh";
+            object[] values = { kh.IdCustomer, kh.NameCustomer, kh.IdCardCustomer, kh.PhoneNumber, kh.EmailCustomer, kh.AddressCustomer };
+            string query = "Delete Customer Where IdCustomer= @makh";
             return db.ExecuteNonQueryPara(query, param, values);
         }
 

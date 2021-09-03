@@ -27,9 +27,9 @@ namespace QuanLyKhachSan.GUI
         {
             InitializeComponent();
         }
-        private NhanVien_DTO getdatanv()
+        private Employee_DTO getdatanv()
         {
-            NhanVien_DTO nv = new NhanVien_DTO();
+            Employee_DTO nv = new Employee_DTO();
             nv.Manv = txtmanv.Text;
             nv.Macv = cbChucvu.SelectedValue.ToString();
             nv.Hoten = txthoten.Text;
@@ -216,7 +216,7 @@ namespace QuanLyKhachSan.GUI
         {
             if (t == 1)
             {
-                NhanVien_DTO nv = getdatanv();
+                Employee_DTO nv = getdatanv();
                 if (nvbl.addnv(nv))
                 {
                     MessageBox.Show("Thêm nhân viên thành công!");
@@ -236,7 +236,7 @@ namespace QuanLyKhachSan.GUI
             }
             if (t == 2)
             {
-                NhanVien_DTO nv = getdatanv();
+                Employee_DTO nv = getdatanv();
                 if (nvbl.editnv(nv))
                 {
                     MessageBox.Show("Chỉnh sửa nhân viên thành công!");
@@ -259,7 +259,7 @@ namespace QuanLyKhachSan.GUI
         {
             if (MessageBox.Show("Xóa nhân viên: " + txtmanv.Text + " - " + txthoten.Text + "?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                NhanVien_DTO nv = getdatanv();
+                Employee_DTO nv = getdatanv();
                 if (db.checkExist("quyennv", "manv", txtmanv.Text))
                 {
                     MessageBox.Show("Chỉ có thể xóa nhân viên chưa phân quyền!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
